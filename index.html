@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10131c" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>تاسكات اليوم</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="تاسكات اليوم">
+        <span class="brand-icon">✓</span>
+        <span>يومي<span class="brand-dot">.</span></span>
+      </a>
+      <div class="today-pill"><span class="status-dot"></span><span id="todayLabel">تاسكات اليوم</span></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">خطوة صغيرة كل يوم ✨</p>
+        <h1>خلّي يومك<br><span>أوضح وأسهل.</span></h1>
+        <p class="hero-subtitle">رتّب أولوياتك، وخلّص مهامك واحدة واحدة.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+        <div class="art-check">✓</div>
+        <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="إحصائيات المهام">
+      <article class="stat-card"><span class="stat-icon purple">▤</span><div><strong id="totalCount">0</strong><span>كل المهام</span></div></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><div><strong id="doneCount">0</strong><span>تم إنجازها</span></div></article>
+      <article class="stat-card"><span class="stat-icon orange">◷</span><div><strong id="remainingCount">0</strong><span>متبقية</span></div></article>
+    </section>
+
+    <section class="task-section">
+      <div class="section-heading">
+        <div><h2>مهامك النهارده</h2><p>كل إنجاز، مهما كان صغير، بيفرق.</p></div>
+        <button id="clearDone" class="text-button" type="button">مسح المنجَز</button>
+      </div>
+
+      <form id="taskForm" class="add-task">
+        <label class="sr-only" for="taskInput">اكتب مهمة جديدة</label>
+        <input id="taskInput" type="text" maxlength="120" placeholder="عايز تنجز إيه النهارده؟" autocomplete="off" />
+        <select id="priorityInput" aria-label="أولوية المهمة">
+          <option value="normal">عادية</option>
+          <option value="high">مهمة</option>
+          <option value="low">بسيطة</option>
+        </select>
+        <button class="add-button" type="submit"><span>＋</span> أضف مهمة</button>
+      </form>
+
+      <div class="filters" role="group" aria-label="تصفية المهام">
+        <button class="filter active" data-filter="all" type="button">الكل <span id="allFilterCount">0</span></button>
+        <button class="filter" data-filter="active" type="button">لسه مخلصتش</button>
+        <button class="filter" data-filter="done" type="button">اتعملت</button>
+      </div>
+
+      <div id="taskList" class="task-list"></div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-illustration">✧</div>
+        <h3>لسه مفيش مهام هنا</h3>
+        <p>اكتب أول مهمة وابدأ يومك بإنجاز صغير.</p>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label"><span>تقدّمك النهارده</span><strong id="progressText">0%</strong></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+    </section>
+    <footer>اعمَل اللي تقدر عليه النهارده، والباقي بكرة 🌱</footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script><script src="pwa.js"></script>
+</body>
+</html>
